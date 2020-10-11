@@ -1,0 +1,13 @@
+{
+    "domain": "fhwise",
+    "name": "fhwise",
+    "documentation": "https://github.com/smarthomefans/py-fhwise",
+    "requirements": [
+      "py-fhwise==0.0.4"
+    ],
+    "dependencies": [],
+    "codeowners": [
+    ],
+    "config_flow": true
+}
+
