@@ -135,7 +135,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     port = config[CONF_PORT]
     host = config[CONF_HOST]
     name = config[CONF_NAME]
-    device = None
+    devices = []
     fhPlayer = FhwisePlayer(host, port)
     _LOGGER.info(f"Initializing with {host}:{port}")
 
@@ -148,6 +148,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
         _LOGGER.error(f"Error connecting to fhwise at {host}:{port}")
         raise PlatformNotReady from err
 
+    fhPlayerDevice = FhwiseMusicPlayerDevice(fhPlayer, host, port, model)
     await fhPlayerDevice.async_update()
     async_track_time_interval(
         hass, fhPlayerDevice.async_update, timedelta(seconds=5)
